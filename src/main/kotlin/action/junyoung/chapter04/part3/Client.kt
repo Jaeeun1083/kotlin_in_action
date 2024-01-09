@@ -1,16 +1,18 @@
 package action.junyoung.chapter04.part3
 
 class Client(val name: String, val postalCode: Int) {
-    override fun toString(): String = "Client(name=$name, postalCode=$postalCode)"
-
-    override fun equals(other: Any?): Boolean {
-        if(other == null || other !is Client) return false
-        return name == other.name && postalCode == other.postalCode
-    }
+    fun copy(name: String = this.name, postalCode: Int = this.postalCode) = Client(name, postalCode)
 }
 
 fun main() {
     val client1 = Client("Alice", 4122)
     val client2 = Client("Alice", 4122)
+    println(client1)
+    println(client2)
     println(client1 == client2)
+
+    val processed = hashSetOf(Client("Alice", 4122))
+    println(processed.contains(Client("Alice", 4122)))
+
+    println(client1.copy(postalCode = 4000))
 }
