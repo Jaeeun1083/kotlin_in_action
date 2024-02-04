@@ -1,8 +1,12 @@
 package action.junyoung.chapter05.part1
 
+import action.junyoung.chapter07.part5.Email
+import action.junyoung.chapter07.part5.loadEmails
 import java.lang.StringBuilder
 
-data class Person(val name: String, var age: Int)
+data class Person(val name: String, var age: Int) {
+    val emails by lazy { loadEmails(this) }
+}
 
 private fun findTheOldest(people: List<Person>) {
     var maxAge = 0
